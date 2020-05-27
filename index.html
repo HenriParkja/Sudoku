@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sudoku</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand" href="#"><img src="LogoTransparent.png" alt=""></a>
+</nav>
+<div class="main">
+    <div class="wrap">
+        <div class="numberButtons" id="numberBtns">
+            <button type="button" class="btn btn-outline-secondary" id="nrBtn1">1</button>
+            <button type="button" class="btn btn-outline-secondary" id="nrBtn2">2</button>
+            <button type="button" class="btn btn-outline-secondary" id="nrBtn3">3</button>
+            <button type="button" class="btn btn-outline-secondary" id="nrBtn4">4</button>
+            <button type="button" class="btn btn-outline-secondary" id="nrBtn5">5</button>
+            <button type="button" class="btn btn-outline-secondary" id="nrBtn6">6</button>
+            <button type="button" class="btn btn-outline-secondary" id="nrBtn7">7</button>
+            <button type="button" class="btn btn-outline-secondary" id="nrBtn8">8</button>
+            <button type="button" class="btn btn-outline-secondary" id="nrBtn9">9</button>
+
+        </div>
+        <div class="board">
+            <table class="table table-bordered" id="grid">
+                <tr>
+                    <td id="td0"></td>
+                    <td id="td1"></td>
+                    <td id="td2"></td>
+                    <td id="td3"></td>
+                    <td id="td4"></td>
+                    <td id="td5"></td>
+                    <td id="td6"></td>
+                    <td id="td7"></td>
+                    <td id="td8"></td>
+                </tr>
+                <tr>
+                    <td id="td9"></td>
+                    <td id="td10"></td>
+                    <td id="td11"></td>
+                    <td id="td12"></td>
+                    <td id="td13"></td>
+                    <td id="td14"></td>
+                    <td id="td15"></td>
+                    <td id="td16"></td>
+                    <td id="td17"></td>
+                </tr>
+                <tr>
+                    <td id="td18"></td>
+                    <td id="td19"></td>
+                    <td id="td20"></td>
+                    <td id="td21"></td>
+                    <td id="td22"></td>
+                    <td id="td23"></td>
+                    <td id="td24"></td>
+                    <td id="td25"></td>
+                    <td id="td26"></td>
+                </tr>
+                <tr>
+                    <td id="td27"></td>
+                    <td id="td28"></td>
+                    <td id="td29"></td>
+                    <td id="td30"></td>
+                    <td id="td31"></td>
+                    <td id="td32"></td>
+                    <td id="td33"></td>
+                    <td id="td34"></td>
+                    <td id="td35"></td>
+                </tr>
+                <tr>
+                    <td id="td36"></td>
+                    <td id="td37"></td>
+                    <td id="td38"></td>
+                    <td id="td39"></td>
+                    <td id="td40"></td>
+                    <td id="td41"></td>
+                    <td id="td42"></td>
+                    <td id="td43"></td>
+                    <td id="td44"></td>
+                </tr>
+                <tr>
+                    <td id="td45"></td>
+                    <td id="td46"></td>
+                    <td id="td47"></td>
+                    <td id="td48"></td>
+                    <td id="td49"></td>
+                    <td id="td50"></td>
+                    <td id="td51"></td>
+                    <td id="td52"></td>
+                    <td id="td53"></td>
+                </tr>
+                <tr>
+                    <td id="td54"></td>
+                    <td id="td55"></td>
+                    <td id="td56"></td>
+                    <td id="td57"></td>
+                    <td id="td58"></td>
+                    <td id="td59"></td>
+                    <td id="td60"></td>
+                    <td id="td61"></td>
+                    <td id="td62"></td>
+                </tr>
+                <tr>
+                    <td id="td63"></td>
+                    <td id="td64"></td>
+                    <td id="td65"></td>
+                    <td id="td66"></td>
+                    <td id="td67"></td>
+                    <td id="td68"></td>
+                    <td id="td69"></td>
+                    <td id="td70"></td>
+                    <td id="td71"></td>
+                </tr>
+                <tr>
+                    <td id="td72"></td>
+                    <td id="td73"></td>
+                    <td id="td74"></td>
+                    <td id="td75"></td>
+                    <td id="td76"></td>
+                    <td id="td77"></td>
+                    <td id="td78"></td>
+                    <td id="td79"></td>
+                    <td id="td80"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="buttons">
+            <button type="button" class="btn btn-outline-primary" onClick="solveMatrix()">Solve</button>
+
+        </div>
+
+        <p class="difficulty" id="difficulty"></p>
+
+    </div>
+    <footer class="page-footer font-small teal pt-4">
+        <div class="container-fluid text-center text-md-left">
+            <div class="row">
+                <div class="col-md-6 mt-md-0 mt-3">
+                    <h5 class="text-uppercase font-weight-bold">Instructions</h5>
+                    <p>Click on a cell and choose a value. On desktop - enter the values from the keyboard. On mobile - use the buttons to add values. </p>
+                    <p>If value goes red, it is wrong.</p>
+                </div>
+
+                <hr class="clearfix w-100 d-md-none pb-3">
+
+                <div class="col-md-6 mb-md-0 mb-3">
+
+                    <h5 class="text-uppercase font-weight-bold">About the program</h5>
+                    <p>1 - The program generates a filled Sudoku puzzle according to Sudoku rules using relatively
+                        efficient backtracking
+                        algorithm(average time to generate a puzzle < 10ms).</p>
+                    <p>2 - Cells are cleared one by one. After each removal, the same backtracking algorithm checks
+                        whether the puzzle has still
+                        a unique solution. If the puzzle is not unique anymore (has multiple solutions) or sufficient
+                        amount of cells are cleared, a valid Sudoku puzzle that
+                        is ready for solving is returned. Due to the time constraints, it is not possible to select the difficulty level manually. </p>
+                    <p>3 - A separate algorithm will solve the generated puzzle using the methodologies used by humans.
+                        It assigns a difficulty level to a puzzle.</p>
+                    <p>See the source code for further details.</p>
+                    <p class="copy">&copy Henri Parkja 2020</p>
+                </div>
+
+            </div>
+
+        </div>
+    </footer>
+
+</div>
+
+<script>
+    /*
+    DEFINITIONS
+
+    Cell - a square, smalles element in sudoku. There are 81 cells. A cell is empty when its value is equal to 0.
+    Block - 3x3 box
+
+     */
+    const NR_CELLS = 81;
+    const SIZE = 9;
+    const CELLS_TO_REMOVE = 55; // Define how many cells the program tries to remove maximally
+    const blockStartingIds = [0, 3, 6, 27, 30, 33, 54, 57, 60]; // Define starting cell indices of blocks
+    const cellNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // Define the possible cell nr-s
+    let puzzle = new Array(81); // 1D array to store the generated puzzle
+    let availableCellNumbers = new Array(81); // Array to store the numbers available for trying to each cell when solving the puzzle
+    let puzzleMatrix = new Array(9); // global array to store the changing puzzle
+    let goingBack = false; // If the algorithm is going back to the previous step
+    let blocks = new Array(9); // Array to store the block indices
+    let previousCellIndices = []; // Previously tried cell indices
+    let isSolved = false; // Checks if the puzzle is solved by user by clicking on the button
+    let selectedCellInMobile = NaN; // Selected cell index in mobile
+    let availableCellsToRemove = new Array(60); // Array to store available cells to remove for each step
+    let isUnique = false; // If the puzzle is unique or not
+    let cellsRemoved; // Store the nr of cells removed from the generated puzzle
+    let index, removedCellIndex, currentCellIndex;
+    let cellsRemaining; // How many cells are remaining in the puzzle
+    let reducedPuzzle = new Array(9); // Matrix to store the puzzle where the cells are removed and again going to be solved
+    let countNakedSingle = 0; // count the times the algorithm could apply the method
+    let nakedSingleMethodIsValid = true;
+
+    // Check if user is on touch device
+    if (isTouchDevice()) {
+        document.getElementById("numberBtns").style.display = "flex";
+    }
+    // Add listeners to number buttons
+    addNumberButtonListeners();
+
+    // Fill in Id-s of blocks
+    for (let i = 0; i < 9; i++) {
+        let index = 0;
+        blocks[i] = new Array(9);
+        for (let j = 0; j < 3; j++) {
+            for (let k = 0; k < 3; k++) {
+                blocks[i][index] = blockStartingIds[i] + k * 9 + j;
+                index++;
+            }
+        }
+    }
+
+    // Fill available cell numbers array for the algorithm
+    for (let i = 0; i < NR_CELLS; i++) {
+        availableCellNumbers[i] = Array.from(cellNumbers);
+    }
+
+    // Create and fill empty 2D representation of the puzzle
+    for (let i = 0; i < SIZE; i++) {
+        puzzleMatrix[i] = new Array(9).fill(0);
+    }
+
+    // Loop to generate the initial puzzle
+    currentCellIndex = 0;
+    let results = [];
+    while (currentCellIndex < NR_CELLS) {
+        results = populateCell(currentCellIndex, puzzleMatrix);
+        currentCellIndex = results[0];
+        puzzleMatrix = results[1];
+    }
+
+
+    // Make a copy from the generated puzzle
+    let generatedPuzzle = new Array(9);
+    for (let i = 0; i < SIZE; i++) {
+        generatedPuzzle[i] = new Array(9);
+        for (let j = 0; j < SIZE; j++) {
+            generatedPuzzle[i][j] = puzzleMatrix[i][j];
+        }
+    }
+
+
+    // Initialize
+    currentCellIndex = 0;
+    for (let i = 0; i < NR_CELLS; i++) {
+        availableCellNumbers[i] = Array.from(cellNumbers);
+    }
+
+    index = 0;
+    for (let i = 0; i < 60; i++) {
+        availableCellsToRemove[i] = new Array(81);
+        index = 0;
+        for (j = 0; j < 81; j++) {
+            availableCellsToRemove[i][j] = index;
+            index++;
+        }
+
+    }
+    cellsRemaining = 81;
+    cellsRemoved = 0;
+    goingBack = false;
+    removedCellIndex = 0;
+
+    // Loop to remove cells until enough cells are removed OR non-unique puzzle is reached
+    while (cellsRemoved < CELLS_TO_REMOVE) {
+        if (cellsRemoved === -1) {
+            break;
+        }
+        if (availableCellsToRemove[cellsRemoved].length === 0) {
+
+            index = 0;
+            for (j = 0; j < 81; j++) {
+                availableCellsToRemove[cellsRemoved][j] = index;
+                index++;
+            }
+            cellsRemoved--;
+            availableCellsToRemove[cellsRemoved].splice(availableCellsToRemove[cellsRemoved].indexOf(removedCellIndex), 1);
+        }
+        removedCellIndex = removeCell(cellsRemoved);
+        let results;
+        // copy the matrix where cells are removed for filling it in again
+        for (let i = 0; i < SIZE; i++) {
+            reducedPuzzle[i] = new Array(9);
+            for (let j = 0; j < SIZE; j++) {
+                reducedPuzzle[i][j] = puzzleMatrix[i][j];
+            }
+        }
+
+        // Solve the puzzle using backtracking algorithm
+        currentCellIndex = 0;
+        while (currentCellIndex < 81) {
+            results = populateCell(currentCellIndex, reducedPuzzle);
+            currentCellIndex = results[0];
+            reducedPuzzle = results[1];
+        }
+
+
+        isUnique = isUniqueSolution(reducedPuzzle); // Check if the solution is still unique
+
+        if (isUnique) { // if yes then continue
+            cellsRemoved++;
+            cellsRemaining -= 1;
+        } else {
+            puzzleMatrix[Math.floor(removedCellIndex / 9)][removedCellIndex % 9] = generatedPuzzle[Math.floor(removedCellIndex / 9)][removedCellIndex % 9];
+            for (let i = 0; i < SIZE; i++) {
+                reducedPuzzle[i] = new Array(9);
+                for (let j = 0; j < SIZE; j++) {
+                    reducedPuzzle[i][j] = puzzleMatrix[i][j];
+                }
+            }
+            currentCellIndex = 0;
+            while (currentCellIndex < 81) {
+                results = populateCell(currentCellIndex, reducedPuzzle);
+                reducedPuzzle = results[1];
+                currentCellIndex = results[0];
+            }
+
+            break;
+        }
+
+    }
+
+    // Puzzle to 1D array
+    puzzle.fill(0);
+    index = 0;
+    for (i = 0; i < 9; i++) {
+        for (j = 0; j < 9; j++) {
+            puzzle[index] = puzzleMatrix[i][j];
+            index++;
+        }
+
+    }
+
+    // Display puzzle and add event listeners
+    for (let i = 0; i < NR_CELLS; i++) {
+        let td = document.getElementById("grid").getElementsByTagName("td")[i];
+        let span = document.createElement("SPAN");
+        if (puzzle[i] === 0) {
+            if (!isTouchDevice()) {
+                span.contentEditable = "true";
+            }
+
+            span.innerText = '';
+        } else {
+            span.textContent = '' + puzzle[i];
+        }
+
+        if (puzzle[i] === 0) {
+            let el = document.getElementById("td" + i);
+            el.onkeypress = function () {
+                return (this.innerText.length < 1);
+            };
+            el.onkeyup = function () {
+                handleTextInput(el);
+            };
+            if (isTouchDevice()) {
+                el.onclick = function () {
+                    handleCellClick(el);
+                }
+            }
+
+        }
+
+        td.appendChild(span);
+
+    }
+
+    // Try to solve the puzzle with human method
+    // Make a copy from the generated puzzle
+    let humanMethodPuzzle = new Array(9);
+    for (let i = 0; i < SIZE; i++) {
+        humanMethodPuzzle[i] = new Array(9);
+        for (let j = 0; j < SIZE; j++) {
+            humanMethodPuzzle[i][j] = puzzleMatrix[i][j];
+        }
+    }
+        let res = solveByHumanMethods(humanMethodPuzzle);
+        nakedSingleMethodIsValid = res[0];
+        humanMethodPuzzle = res[1];
+        console.log(countNakedSingle);
+
+
+    // Assign difficulty
+    let difficulty;
+    if (countNakedSingle < 3) {
+        difficulty = 'Hard';
+    } else if (countNakedSingle >=3 && countNakedSingle < 6) {
+        difficulty = 'Medium';
+    } else {
+        difficulty = 'Easy';
+    }
+
+    document.getElementById("difficulty").innerHTML = 'Difficulty: ' + difficulty;
+
+
+
+    /* Function to remove a cell from generated Sudoku one by one */
+    function removeCell(step) {
+        let cellToRemove;
+        let nrOfCellsRemoved = 0;
+        let cellRemoved = false;
+        let indexOfRemovedCell;
+        while (!cellRemoved) {
+            cellToRemove = availableCellsToRemove[step][Math.floor(Math.random() * availableCellsToRemove[step].length)];
+            indexOfRemovedCell = availableCellsToRemove[step].indexOf(cellToRemove);
+
+            if (puzzleMatrix[Math.floor(cellToRemove / 9)][cellToRemove % 9] !== 0) {
+                puzzleMatrix[Math.floor(cellToRemove / 9)][cellToRemove % 9] = 0;
+
+                cellRemoved = true;
+                availableCellsToRemove[step].splice((availableCellsToRemove[step].indexOf(cellToRemove + 1)), 1);
+            }
+        }
+        nrOfCellsRemoved++;
+
+        return cellToRemove;
+    }
+
+    /* Function to check whether the solution after cell removal is unique */
+    function isUniqueSolution(matrix) {
+        for (let i = 0; i < SIZE; i++) {
+            for (let j = 0; j < SIZE; j++) {
+                if (matrix[i][j] !== generatedPuzzle[i][j]) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    /* Function to solve puzzle by methods used by humans to detect the level of a puzzle */
+    function solveByHumanMethods(matrix) {
+        let cellIndex;
+        let row, column, currentCellBlock;
+        let puzzleIsSolved = true;
+
+
+        // Determine if a cell can be populated using Naked Single solving method
+        for (cellIndex = 0; cellIndex < NR_CELLS; cellIndex++) {
+            if (matrix[Math.floor(cellIndex / SIZE)][cellIndex % SIZE] === 0) {
+                puzzleIsSolved = false; // Puzzle not solved yet
+
+                let res = determineRowColumnAndBlock(cellIndex);
+                row = res[0];
+                column = res[1];
+                currentCellBlock = res[2];
+
+                let existsInBlock = false; // Whether the value already exists in a block
+                let valueIsValid = true; // Assume the valueToTry is true at first
+                let nrOfValidValues = 0; // Store nr of valid values
+                for (let k = 0; k < 9; k++) {
+                    let valueToTry = k + 1;
+                    if (valueToTry === matrix[Math.floor(blocks[currentCellBlock][k] / 9)][blocks[currentCellBlock][k] % 9]) {
+                        existsInBlock = true;
+                    }
+                    if (matrix[row][k] === valueToTry || matrix[k][column] === valueToTry || existsInBlock) {
+                        valueIsValid = false;
+                        // remove the value from the available values of the current cell
+                    }
+                    if (valueIsValid) {
+                        matrix[Math.floor(cellIndex / 9)][cellIndex % 9] = valueToTry;
+                        nrOfValidValues++;
+                    }
+                }
+
+                if (nrOfValidValues === 1) {
+                    countNakedSingle++;
+                }
+
+            }
+        }
+
+        // If at least one cell has been solved using Naked Single method return and start over
+        if (countNakedSingle > 0) {
+            return [true, matrix];
+        } else {
+            return [false, matrix];
+        }
+
+
+
+    }
+
+    /* Function/algorithm to fill Sudoku puzzle cell by cell and only filling in the cells that are empty (=0) */
+    function populateCell(currentCellIndex, matrix) {
+        let row, column, currentCellBlock;
+        let valueIsValid = true; // Assume the value to assign is true initially
+
+        let res = determineRowColumnAndBlock(currentCellIndex);
+        // Get the current row
+        row = res[0];
+        // Get the current column
+        column = res[1];
+        // Get the block of the current cell
+        currentCellBlock = res[2];
+
+        // If the value is non-zero, determine the action
+        if (matrix[row][column] !== 0) {
+            if (goingBack && previousCellIndices.length !== 0) {
+                // Make the previously assigned cell zero again
+                matrix[Math.floor(previousCellIndices[previousCellIndices.length - 1] / 9)][previousCellIndices[previousCellIndices.length - 1] % 9] = 0;
+                currentCellIndex = previousCellIndices[previousCellIndices.length - 1];
+            } else {
+                // Go forward
+                currentCellIndex++;
+            }
+            return [currentCellIndex, matrix];
+        }
+        goingBack = false;
+
+        // If there are no numbers available left to try for a cell then create new numbers and go back one cell
+        if (availableCellNumbers[currentCellIndex].length === 0 && previousCellIndices.length !== 0) {
+
+            availableCellNumbers[currentCellIndex] = Array.from(cellNumbers);
+
+            // Make the previous cell empty again and delete the value from the available values that lead to dead end
+            let prev = previousCellIndices[previousCellIndices.length - 1];
+            availableCellNumbers[prev].splice(availableCellNumbers[prev].indexOf(matrix[Math.floor(prev / 9)][prev % 9]), 1);
+            matrix[Math.floor(previousCellIndices[previousCellIndices.length - 1] / 9)][previousCellIndices[previousCellIndices.length - 1] % 9] = 0;
+            currentCellIndex = previousCellIndices[previousCellIndices.length - 1];
+            previousCellIndices.pop();
+            goingBack = true;
+            return [currentCellIndex, matrix];
+        } else {
+            // Generate random number from the available numbers of a cell
+            let randomValue = availableCellNumbers[currentCellIndex][Math.floor(Math.random() * availableCellNumbers[currentCellIndex].length)];
+            valueIsValid = true; // assume randomValue is valid for the cell
+
+            let existsInBlock = false; // whether the value already exists in a block
+            for (let k = 0; k < 9; k++) {
+                if (randomValue === matrix[Math.floor(blocks[currentCellBlock][k] / 9)][blocks[currentCellBlock][k] % 9]) {
+                    existsInBlock = true;
+                }
+                if (matrix[row][k] === randomValue || matrix[k][column] === randomValue || existsInBlock) {
+                    valueIsValid = false;
+                    // Remove the value from the available values of the current cell
+                    availableCellNumbers[currentCellIndex].splice(availableCellNumbers[currentCellIndex].indexOf(randomValue), 1);
+                    return [currentCellIndex, matrix];
+                }
+            }
+            // If a value is valid then assign to a cell and move forward by one cell
+            if (valueIsValid) {
+                matrix[row][column] = randomValue;
+                previousCellIndices.push(currentCellIndex);
+                currentCellIndex++;
+                return [currentCellIndex, matrix];
+            }
+        }
+    }
+
+    /* Function to add event listeners to number buttons */
+    function addNumberButtonListeners() {
+        for (let i = 1; i <= 9; i++) {
+            let btn = document.getElementById("nrBtn" + i);
+            btn.onclick = function () {
+                handleNumberButtonClick(i);
+            }
+        }
+    }
+
+    /* Function to handle number button click on mobile */
+    function handleNumberButtonClick(number) {
+        let existsInBlock = false;
+        let inputIsValid = true;
+        let row, column, results, selectedCellBlock, el;
+
+        results = determineRowColumnAndBlock(selectedCellInMobile);
+        row = results[0];
+        column = results[1];
+        selectedCellBlock = results[2];
+
+        el = document.getElementById("td" + selectedCellInMobile);
+        el.textContent = number;
+        el.style.color = "#1d90f0";
+
+        for (let k = 0; k < 9; k++) {
+            if (number === puzzleMatrix[Math.floor(blocks[selectedCellBlock][k] / 9)][blocks[selectedCellBlock][k] % 9]) {
+                existsInBlock = true;
+            }
+            if (puzzleMatrix[row][k] === number || puzzleMatrix[k][column] === number || existsInBlock) {
+                inputIsValid = false;
+                break;
+            }
+        }
+
+        if (inputIsValid && el.classList.contains("wrongInput")) {
+            el.classList.remove("wrongInput");
+            el.style.color = "#1d90f0";
+        } else if (!number || !inputIsValid) {
+            el.classList.add("wrongInput");
+
+        }
+
+
+    }
+
+    /* Function to get row and column and block */
+    function determineRowColumnAndBlock(index) {
+        let selectedCellBlock = 0;
+        // Row of the selected cell
+        let row = Math.floor(index / 9);
+        // Column of the selected cell
+        let column = index % 9;
+        // Determine the block of the selected cell
+        for (let k = 0; k < 9; k++) {
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    let blockCellIndex = blockStartingIds[k] + i * 9 + j;
+                    if (index === blockCellIndex) {
+                        selectedCellBlock = k;
+                    }
+                }
+            }
+        }
+        return [row, column, selectedCellBlock];
+    }
+
+    /* Function to handle click on a cell on mobile */
+    function handleCellClick(el) {
+        if (selectedCellInMobile) {
+            let prevEl = document.getElementById("td" + selectedCellInMobile);
+            prevEl.classList.remove("mobileClick");
+        }
+        let elementId = el.id.toString();
+        let index = parseInt(elementId.slice(2));
+        el.classList.add("mobileClick");
+
+        if (puzzle[index] === 0) {
+            selectedCellInMobile = index;
+            //el.style.background = "#69c275";
+            //el.style.boxShadow ="box-shadow: 0 3px 0 #00823F;";
+        }
+
+
+    }
+
+    /* Function to handle text input by user on desktop */
+    function handleTextInput(el) {
+        let inputValue = parseInt(el.innerText);
+        let elementId = el.id.toString();
+        let index = parseInt(elementId.slice(2));
+        let row, column, selectedCellBlock, results;
+        let existsInBlock = false;
+        let inputIsValid = true;
+
+        //
+        if (el.innerText === '') {
+            return;
+        }
+        results = determineRowColumnAndBlock(index);
+        row = results[0];
+        column = results[1];
+        selectedCellBlock = results[2];
+
+        for (let k = 0; k < 9; k++) {
+            if (inputValue === puzzleMatrix[Math.floor(blocks[selectedCellBlock][k] / 9)][blocks[selectedCellBlock][k] % 9]) {
+                existsInBlock = true;
+            }
+            if (puzzleMatrix[row][k] === inputValue || puzzleMatrix[k][column] === inputValue || existsInBlock) {
+                inputIsValid = false;
+                break;
+            }
+        }
+        if (inputIsValid && inputValue && el.classList.contains("wrongInput")) {
+            el.classList.remove("wrongInput");
+        } else if (!inputValue || !inputIsValid) {
+            el.classList.add("wrongInput");
+            el.innerText = inputValue;
+            //el.innerText.fontcolor("#eb1a05");
+            el.contentEditable = "true";
+        }
+
+        // Add the relevant value to the matrix after user input
+        if (!inputValue) {
+            puzzleMatrix[Math.floor(index / SIZE)][index % SIZE] = 0;
+        } else {
+            puzzleMatrix[Math.floor(index / SIZE)][index % SIZE] = inputValue;
+
+        }
+
+    }
+
+    /* Function to display the solution if user presses the "Solve" button */
+    function solveMatrix() {
+        if (isSolved) return;
+        for (let i = 0; i < 9; i++) {
+            for (let j = 0; j < 9; j++) {
+                let td = document.getElementById("td" + (i * SIZE + j));
+                let span = document.createElement("SPAN");
+
+                if (puzzleMatrix[i][j] === 0 || puzzleMatrix[i][j] !== generatedPuzzle[i][j]) {
+                    td.innerText = generatedPuzzle[i][j];
+                    td.classList.add("solvedNumbers");
+                    if (td.classList.contains("wrongInput")) {
+                        td.classList.remove("wrongInput");
+                    }
+                }
+                //td.appendChild(span);
+            }
+        }
+        isSolved = true;
+    }
+
+    /* Function to check if a device is touch or not */
+    function isTouchDevice() {
+        return (('ontouchstart' in window));
+    }
+
+
+</script>
+</body>
+</html>
